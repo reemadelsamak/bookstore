@@ -13,7 +13,7 @@
         :title="book.author"
       >
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">{{ book.title }}</strong>
+          <strong class="mb-1">Title: {{ book.title }}</strong>
           <small class="text-muted">{{
             formatCurrency(book.price.value)
           }}</small>

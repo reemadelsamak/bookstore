@@ -1,10 +1,10 @@
 <template>
   <!-- Modal -->
-  <div class="modal" tabindex="-1">
-    <div class="modal-dialog">
+  <div class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Confirm Purchase</h5>
+          <h5 class="text-center">Confirm Purchase</h5>
           <button
             type="button"
             class="btn-close"
@@ -18,22 +18,25 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-success"
+            @click="emptyWishlist"
             data-bs-dismiss="modal"
-            @click="closeModal"
-          >
-            Close
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-dismiss="modal"
-            @click="confirmCheckout"
           >
             Confirm
           </button>
+          <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapMutations } from "vuex";
+
+export default {
+  methods: {
+    ...mapMutations(["emptyWishlist"]),
+  },
+};
+</script>

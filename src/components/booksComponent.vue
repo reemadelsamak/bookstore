@@ -1,5 +1,5 @@
 <template>
-  <div class="row mt-4 d-flex justify-content-center" v-if="!isWishlistVisible">
+  <div class="row mt-4 d-flex justify-content-center">
     <div
       v-for="book in books"
       :key="book.ISBN"
@@ -51,3 +51,31 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions, mapMutations } from "vuex";
+export default {
+  data: () => ({}),
+  methods: {
+    checkExists(book) {
+      return this.wishlist.items.some((Iitem) => Iitem.book.ISBN === book.ISBN);
+    },
+    ...mapMutations(["addToWishlist"]),
+    formatCurrency(value) {
+      return Intl.NumberFormat("ar-EG", {
+        style: "currency",
+        currency: "EGP",
+        minimumFractionDigits: 1,
+      }).format(value);
+    },
+  },
+  created() {
+    this.$store.dispatch("fetchBooks");
+  },
+  components: {},
+  computed: {
+    ...mapGetters(["books"]),
+    ...mapGetters(["wishlist"]),
+  },
+};
+</script>

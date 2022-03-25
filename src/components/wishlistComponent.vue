@@ -1,5 +1,6 @@
 <template>
-  <div class="row" v-if="isWishlistVisible">
+  <confirmPurchaceModal />
+  <div class="row mt-4 d-flex justify-content-center">
     <h2 v-if="wishlist.items.length == 0" class="col-md-12 text-center mt-4">
       Your Wishlist is Empty, Add Some Books
     </h2>
@@ -40,10 +41,46 @@
         style="width: fit-content"
         data-bs-toggle="modal"
         data-bs-target=".modal"
-        @click="checkout"
       >
         Checkout
       </button>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapMutations } from "vuex";
+import confirmPurchaceModal from "./confirmPurchaceModal.vue";
+export default {
+  data: () => ({}),
+  methods: {
+    ...mapMutations(["deleteFromWishlist"]),
+    ...mapMutations(["checkout"]),
+    ...mapMutations(["confirmCheckout"]),
+    ...mapMutations(["closeModal"]),
+
+    formatCurrency(value) {
+      return Intl.NumberFormat("ar-EG", {
+        style: "currency",
+        currency: "EGP",
+        minimumFractionDigits: 1,
+      }).format(value);
+    },
+    getTotalPrice() {
+      let totalPrice = 0;
+      for (let i = 0; i < this.wishlist.items.length; i++) {
+        totalPrice += this.wishlist.items[i].book.price.value;
+      }
+      return totalPrice;
+    },
+  },
+  created() {
+    this.$store.dispatch("fetchBooks");
+  },
+  components: { confirmPurchaceModal },
+  computed: {
+    ...mapGetters(["books"]),
+    ...mapGetters(["wishlist"]),
+  },
+};
+</script>
