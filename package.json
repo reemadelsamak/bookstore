@@ -8,7 +8,9 @@
     "db:server": "json-server --watch --port 5000 db-1648164027283.json"
   },
   "dependencies": {
-    "vue": "^3.2.13"
+    "axios": "^0.20.0-0",
+    "vue": "^3.2.13",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-service": "~5.0.0"

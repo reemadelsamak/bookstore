@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
-import wrapperComponent from './wrapperComponent.vue'
+import App from './App.vue'
+import store from './store/store'
 
-createApp(wrapperComponent).mount('#app')
+createApp(App).use(store).mount('#app')
