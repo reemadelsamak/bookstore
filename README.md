@@ -1,5 +1,4 @@
-# bookstore-d03
-
+# Bookstore Lab
 ## Project setup
 ```
 npm install
