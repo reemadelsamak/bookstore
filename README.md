@@ -1,18 +1,19 @@
-# Bookstore Lab
+# Bookstore Simple App 
+Simple Book Store using VueJS 
+
 ## Project setup
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+## Connect to Database Server
+```
+nmp run db:server
+```
+### Run the Project
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# Demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://user-images.githubusercontent.com/72516521/169608515-90899b15-d2c6-414f-a6bc-278ffcfc3c4e.mp4
